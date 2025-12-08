@@ -1,0 +1,8 @@
+# Cora dataset configuration
+data:
+  dataset_name: "cora"
+  num_features: 1433
+  num_classes: 7
+  root: "data/"
+  download: true
+  transform: null

@@ -1,0 +1,63 @@
+# Default configuration for link prediction experiments
+defaults:
+  - _self_
+  - override /model: gcn
+  - override /data: cora
+  - override /train: default
+
+# Experiment settings
+experiment:
+  name: "link_prediction_experiment"
+  tags: ["link_prediction", "gnn"]
+  seed: 42
+  device: "auto"  # auto, cuda, mps, cpu
+
+# Model configuration
+model:
+  hidden_dim: 64
+  num_layers: 2
+  dropout: 0.5
+  activation: "relu"
+  normalization: "batch"
+
+# Data configuration
+data:
+  dataset_name: "cora"
+  data_dir: "data/"
+  train_ratio: 0.85
+  val_ratio: 0.10
+  test_ratio: 0.05
+  negative_sampling_ratio: 1.0
+  inductive: false
+
+# Training configuration
+train:
+  epochs: 200
+  batch_size: 1  # Full graph training
+  learning_rate: 0.01
+  weight_decay: 5e-4
+  patience: 50
+  min_delta: 0.001
+  gradient_clip_norm: 1.0
+
+# Evaluation configuration
+eval:
+  metrics: ["roc_auc", "average_precision", "hits_at_k"]
+  hits_at_k_values: [1, 3, 10, 50]
+  save_predictions: true
+  save_embeddings: true
+
+# Logging configuration
+logging:
+  log_level: "INFO"
+  log_dir: "logs/"
+  use_wandb: false
+  wandb_project: "gnn-link-prediction"
+  save_checkpoints: true
+  checkpoint_dir: "checkpoints/"
+
+# Demo configuration
+demo:
+  streamlit_port: 8501
+  max_nodes_display: 1000
+  enable_interactive_viz: true

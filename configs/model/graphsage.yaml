@@ -1,0 +1,11 @@
+# GraphSAGE model configuration
+model:
+  _target_: src.models.graphsage.GraphSAGEEncoder
+  in_channels: ${data.num_features}
+  hidden_dim: 64
+  out_channels: 64
+  num_layers: 2
+  dropout: 0.5
+  activation: "relu"
+  aggregation: "mean"  # mean, max, lstm
+  normalize: true

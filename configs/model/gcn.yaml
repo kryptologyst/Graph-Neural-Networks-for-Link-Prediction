@@ -1,0 +1,11 @@
+# GCN model configuration
+model:
+  _target_: src.models.gcn.GCNEncoder
+  in_channels: ${data.num_features}
+  hidden_dim: 64
+  out_channels: 64
+  num_layers: 2
+  dropout: 0.5
+  activation: "relu"
+  normalization: "batch"
+  residual: true

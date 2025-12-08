@@ -1,0 +1,8 @@
+# PubMed dataset configuration
+data:
+  dataset_name: "pubmed"
+  num_features: 500
+  num_classes: 3
+  root: "data/"
+  download: true
+  transform: null
